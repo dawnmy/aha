@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Reusable code snippets</title>
-    <link>http://dawnmy.github.io/aha/post/</link>
+    <link>https://dawnmy.github.io/aha/post/</link>
     <description>Recent content in Posts on Reusable code snippets</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 05 Aug 2017 20:49:29 +0200</lastBuildDate>
     
-	<atom:link href="http://dawnmy.github.io/aha/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dawnmy.github.io/aha/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>First</title>
-      <link>http://dawnmy.github.io/aha/post/first/</link>
+      <link>https://dawnmy.github.io/aha/post/first/</link>
       <pubDate>Sat, 05 Aug 2017 20:49:29 +0200</pubDate>
       
-      <guid>http://dawnmy.github.io/aha/post/first/</guid>
+      <guid>https://dawnmy.github.io/aha/post/first/</guid>
       <description>Some codes</description>
     </item>
     
