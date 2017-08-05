@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reusable code snippets</title>
-    <link>http://dawnmy.github.io/stack/</link>
+    <link>http://dawnmy.github.io/aha/</link>
     <description>Recent content on Reusable code snippets</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="http://dawnmy.github.io/stack/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dawnmy.github.io/aha/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
