@@ -6,6 +6,5 @@ draft: true
 
 ## A headline
 
-Some Content for test
-
+This site reposits the code snippets which are reusable for data analysis and visualization written in Python and R. Most of them are bioinformatics relevant.
 
