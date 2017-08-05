@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Reusable code snippets</title>
-    <link>http://dawnmy.github.io/aha/</link>
-    <description>Recent content on Reusable code snippets</description>
+    <title>Posts on Reusable code snippets</title>
+    <link>http://dawnmy.github.io/aha/post/</link>
+    <description>Recent content in Posts on Reusable code snippets</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 05 Aug 2017 20:49:29 +0200</lastBuildDate>
     
-	<atom:link href="http://dawnmy.github.io/aha/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dawnmy.github.io/aha/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,15 +17,6 @@
       
       <guid>http://dawnmy.github.io/aha/post/first/</guid>
       <description>Some codes</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://dawnmy.github.io/aha/about/</link>
-      <pubDate>Sat, 05 Aug 2017 20:47:43 +0200</pubDate>
-      
-      <guid>http://dawnmy.github.io/aha/about/</guid>
-      <description>A headline Some Content for test</description>
     </item>
     
   </channel>

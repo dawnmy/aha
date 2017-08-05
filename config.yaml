@@ -1,6 +1,7 @@
 ---
+archetypeDir: "archetypes"
 contentdir: "content"
-layoutdir: "css"
+layoutdir: "layouts"
 publishdir: "docs"
 indexes:
   category: "categories"
