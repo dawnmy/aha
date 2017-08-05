@@ -10,5 +10,5 @@ baseurl: "https://dawnmy.github.io/aha/"
 title: "Reusable code snippets"
 description: "This site archives the reusable code pieces for data analysis and visualization"
 canonifyurls: false
-theme: hyde
+theme: Blackburn
 ...
