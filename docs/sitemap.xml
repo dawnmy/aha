@@ -3,29 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://dawnmy.github.io/aha/post/first/</loc>
-    <lastmod>2017-08-05T20:49:29+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://dawnmy.github.io/aha/about/</loc>
-    <lastmod>2017-08-05T20:47:43+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://dawnmy.github.io/aha/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://dawnmy.github.io/aha/post/</loc>
-    <lastmod>2017-08-05T20:49:29+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://dawnmy.github.io/aha/</loc>
-    <lastmod>2017-08-05T20:49:29+02:00</lastmod>
     <priority>0</priority>
   </url>
   
