@@ -1,0 +1,6 @@
+baseurl = "http://christat.me/Lunacy"
+languageCode = "en-us"
+title = "Lunacy | A minimal hugo theme"
+theme = "lunacy"
+[Params]
+	DateForm = "2 Jan 2006"

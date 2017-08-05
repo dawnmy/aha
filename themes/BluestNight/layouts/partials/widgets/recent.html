@@ -1,0 +1,13 @@
+{{- if .Site.Params.widgets.recent_articles -}}
+<div class="widget">
+	<header>
+		<span class="widget-header"><span class="fa fa-pencil"></span> <a href="{{ "post/" | absLangURL }}">Recent Posts</a></span>
+	</header>
+	<a class="widget-header-small button" href="{{ "index.xml" | absLangURL }}"><span class="fa fa-rss"></span> Subscribe with RSS</a>
+	<ul>
+		{{- range first 10 (where .Site.Pages "Section" "post") -}}
+		{{ if not (eq .URL "/post/") }}<li><a href="{{ .Permalink }}">{{ .Title }}</a></li>{{ end }}
+		{{- end -}}
+	</ul>
+</div>
+{{- end -}}

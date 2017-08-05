@@ -1,0 +1,11 @@
+---
+contentdir: "content"
+layoutdir: "layouts"
+publishdir: "docs"
+indexes:
+  category: "categories"
+baseurl: "http://dawnmy.github.io/stack"
+title: "Reusable code snippets"
+description: "This site archives the reusable code pieces for data analysis and visualization"
+canonifyurls: true
+---
