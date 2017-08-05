@@ -1,6 +1,6 @@
 ---
 contentdir: "content"
-layoutdir: "layouts"
+layoutdir: "css"
 publishdir: "docs"
 indexes:
   category: "categories"
