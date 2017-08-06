@@ -219,6 +219,70 @@
   
     <article>
   <header>
+    <h2><a href="https://dawnmy.github.io/aha/post/make_customized_kraken_db/">Prepare the sequence file for making customized Kraken DB</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>06 Aug 2017, 22:41</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  </header>
+
+  <p>
+  ```python from Bio import SeqIO
+rename sequences with GI number def rename_header(seq_file, gi_list_file, out_seq_file): fh = open(gi_list_file, &ldquo;r&rdquo;) gi_list = [gi.strip() for gi in fh]
+fh.close() n = 0 out_seqs = [] for seq_record in SeqIO.parse(seq_file, &quot;fasta&quot;): if seq_record.seq: gi_header = &quot;gi|{}|gb|{}&quot;.format(gi_list[n], seq_record.description) # print(gi_header) seq_record.id = gi_header #&quot;gi|&quot; + gi_list[n] seq_record.description = &quot;&quot; out_seqs.append(seq_record) n += 1 # print(seq_record) # print(seq_record) SeqIO.write(out_seqs, out_seq_file, &quot;fasta&quot;)  retrive the representative def extract_seq(seq_file, name_list, out_seq_file): out_seqs = [] for seq_record in SeqIO.
+  </p>
+
+  
+  <footer>
+    <a href="https://dawnmy.github.io/aha/post/make_customized_kraken_db/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="https://dawnmy.github.io/aha/post/stacked_barplot_using_ggplot/">Stacked barplot using ggplot2</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>06 Aug 2017, 22:26</time>
+  </div>
+
+  
+
+  
+
+  
+
+</div>
+
+  </header>
+
+  <p>
+  library(ggplot2) library(reshape2) mt_rel &lt;- read.delim(&quot;mt_rel_gt2_forR.txt&quot;, sep = &quot;\t&quot;, stringsAsFactors = F) colnames(mt_rel) &lt;- gsub(&quot;^X&quot;, &quot;&quot;, colnames(mt_rel)) mt_rel_melt &lt;- melt(mt_rel,id.vars = &quot;Species&quot;, variable.name = &quot;samples&quot;, value.name = &quot;Abd&quot;) #library(RColorBrewer) mt_rel_melt$samples &lt;- factor(mt_rel_melt$samples, levels=rev(levels(mt_rel_melt$samples))) ggplot(mt_rel_melt, aes(x = samples, y = Abd, fill = Species)) + geom_bar(stat = &quot;identity&quot;, width = 0.7) + ylab(&quot;% abundance&quot;) + theme_bw() + theme(text = element_text(size=17, face = &quot;bold&quot;)) + scale_fill_ucscgb(alpha = 0.8) +coord_flip() ggsave(&quot;./sample_kraken_composition_rel.pdf&quot;, width = 10, height = 8)  
+  </p>
+
+  
+</article>
+
+  
+    <article>
+  <header>
     <h2><a href="https://dawnmy.github.io/aha/post/boxplot_with_breaks/">Boxplot with breaks on y-axis using Python</a></h2>
 
     <div class="post-meta">

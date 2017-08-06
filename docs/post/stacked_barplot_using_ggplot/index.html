@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.25.1" />
 
-  <title>Boxplot with breaks on y-axis using Python &middot; Reusable code snippets</title>
+  <title>Stacked barplot using ggplot2 &middot; Reusable code snippets</title>
 
   
   
@@ -205,7 +205,7 @@
 
 
 <div class="header">
-  <h1>Boxplot with breaks on y-axis using Python</h1>
+  <h1>Stacked barplot using ggplot2</h1>
   <h2></h2>
 </div>
 <div class="content">
@@ -214,7 +214,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>06 Aug 2017, 21:59</time>
+    <time>06 Aug 2017, 22:26</time>
   </div>
 
   
@@ -225,59 +225,38 @@
 
 </div>
 
-  <blockquote>
-<p>Boxplot is extremely useful to illustrate the distribution of your data statistically. However, in some cases there are massive difference on distribution between the boxes. And we do not want to show the whole y-axis as this will make the data points unvisible especially when the figure size is limited. Here is a example showing how to depict such data in a decent way with breaks on y-aixs using <code>matplotlib</code>. <code>matplotlib</code> does not have a build-in functionality to easily  make such plot like <code>Origin</code>. Therefore I accomplished this need in a bit complex alternative way.</p>
-</blockquote>
+  <pre><code class="language-r">library(ggplot2)
+library(reshape2)
+mt_rel &lt;- read.delim(&quot;mt_rel_gt2_forR.txt&quot;, sep = &quot;\t&quot;, stringsAsFactors = F)
 
-<pre><code class="language-python">import seaborn as sns
-import matplotlib.pyplot as plt
-f, (ax, ax2) = plt.subplots(2, 1, sharex=True)
-plt.rcParams['svg.fonttype'] = 'none'
-plt.rcParams['pdf.fonttype'] = 42
-sns.set(font=&quot;Arial&quot;, style=&quot;whitegrid&quot;, context='paper', font_scale=2)
+colnames(mt_rel) &lt;- gsub(&quot;^X&quot;, &quot;&quot;, colnames(mt_rel))
 
-# plt.style.use('fivethirtyeight')
-sns.boxplot(data=df5, x='Virus', y='percentage', hue='state', ax=ax, palette='husl', linewidth=0.5, fliersize=3.7)
-sns.boxplot(data=df5, x='Virus', y='percentage', hue='state', ax=ax2, palette='husl', linewidth=0.5, fliersize=3.7)
-ax.set_ylim(70, 100)  # outliers only
-ax2.set_ylim(0, 10)  # most of the data points
-ax.spines['bottom'].set_visible(False)
-ax.get_xaxis().set_visible(False)
+mt_rel_melt &lt;- melt(mt_rel,id.vars = &quot;Species&quot;, variable.name = &quot;samples&quot;, value.name = &quot;Abd&quot;)
 
-ax2.spines['top'].set_visible(False)
-ax.xaxis.tick_top()
-ax.tick_params(labeltop='off')  # no tick labels at the top
-
-ax2.xaxis.tick_bottom()
-
-d = .015  # size of diagonal lines on axis
-
-kwargs = dict(transform=ax.transAxes, color='k', clip_on=False)
-ax.plot((-d, +d), (-d, +d), **kwargs)        # top-left diagonal
-ax.plot((1 - d, 1 + d), (-d, +d), **kwargs)  # top-right diagonal
-
-kwargs.update(transform=ax2.transAxes)  # switch to the bottom axis
-ax2.plot((-d, +d), (1 - d, 1 + d), **kwargs)  # bottom-left diagonal
-ax2.plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)  # bottom-right diagonal
-
-plt.xticks(rotation=60)
+#library(RColorBrewer)
+mt_rel_melt$samples &lt;- factor(mt_rel_melt$samples, levels=rev(levels(mt_rel_melt$samples)))
+ggplot(mt_rel_melt, aes(x = samples, y = Abd, fill = Species)) + 
+  geom_bar(stat = &quot;identity&quot;, width = 0.7) + ylab(&quot;% abundance&quot;) + 
+  theme_bw() +
+  theme(text = element_text(size=17, face = &quot;bold&quot;)) + 
+  scale_fill_ucscgb(alpha = 0.8) +coord_flip()
+  
+ggsave(&quot;./sample_kraken_composition_rel.pdf&quot;, width = 10, height = 8)
 
 </code></pre>
-
-<p>The figure needs some adjustment with vector graph editor as <code>AI</code>.</p>
 
 
   
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://dawnmy.github.io/aha/post/first/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://dawnmy.github.io/aha/post/boxplot_with_breaks/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://dawnmy.github.io/aha/post/first/">First</a>
+      <a href="https://dawnmy.github.io/aha/post/boxplot_with_breaks/">Boxplot with breaks on y-axis using Python</a>
     </nav>
     
   </div>
@@ -287,13 +266,13 @@ plt.xticks(rotation=60)
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="https://dawnmy.github.io/aha/post/stacked_barplot_using_ggplot/">Stacked barplot using ggplot2</a>
+      <a href="https://dawnmy.github.io/aha/post/make_customized_kraken_db/">Prepare the sequence file for making customized Kraken DB</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="https://dawnmy.github.io/aha/post/stacked_barplot_using_ggplot/"><i class="fa fa-chevron-right"></i></a>
+    <a href="https://dawnmy.github.io/aha/post/make_customized_kraken_db/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>

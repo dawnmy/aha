@@ -6,10 +6,30 @@
     <description>Recent content on Reusable code snippets</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2017. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 06 Aug 2017 21:59:26 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 06 Aug 2017 22:41:57 +0200</lastBuildDate>
     
 	<atom:link href="https://dawnmy.github.io/aha/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Prepare the sequence file for making customized Kraken DB</title>
+      <link>https://dawnmy.github.io/aha/post/make_customized_kraken_db/</link>
+      <pubDate>Sun, 06 Aug 2017 22:41:57 +0200</pubDate>
+      
+      <guid>https://dawnmy.github.io/aha/post/make_customized_kraken_db/</guid>
+      <description>```python from Bio import SeqIO
+rename sequences with GI number def rename_header(seq_file, gi_list_file, out_seq_file): fh = open(gi_list_file, &amp;ldquo;r&amp;rdquo;) gi_list = [gi.strip() for gi in fh]
+fh.close() n = 0 out_seqs = [] for seq_record in SeqIO.parse(seq_file, &amp;quot;fasta&amp;quot;): if seq_record.seq: gi_header = &amp;quot;gi|{}|gb|{}&amp;quot;.format(gi_list[n], seq_record.description) # print(gi_header) seq_record.id = gi_header #&amp;quot;gi|&amp;quot; + gi_list[n] seq_record.description = &amp;quot;&amp;quot; out_seqs.append(seq_record) n += 1 # print(seq_record) # print(seq_record) SeqIO.write(out_seqs, out_seq_file, &amp;quot;fasta&amp;quot;)  retrive the representative def extract_seq(seq_file, name_list, out_seq_file): out_seqs = [] for seq_record in SeqIO.</description>
+    </item>
+    
+    <item>
+      <title>Stacked barplot using ggplot2</title>
+      <link>https://dawnmy.github.io/aha/post/stacked_barplot_using_ggplot/</link>
+      <pubDate>Sun, 06 Aug 2017 22:26:48 +0200</pubDate>
+      
+      <guid>https://dawnmy.github.io/aha/post/stacked_barplot_using_ggplot/</guid>
+      <description>library(ggplot2) library(reshape2) mt_rel &amp;lt;- read.delim(&amp;quot;mt_rel_gt2_forR.txt&amp;quot;, sep = &amp;quot;\t&amp;quot;, stringsAsFactors = F) colnames(mt_rel) &amp;lt;- gsub(&amp;quot;^X&amp;quot;, &amp;quot;&amp;quot;, colnames(mt_rel)) mt_rel_melt &amp;lt;- melt(mt_rel,id.vars = &amp;quot;Species&amp;quot;, variable.name = &amp;quot;samples&amp;quot;, value.name = &amp;quot;Abd&amp;quot;) #library(RColorBrewer) mt_rel_melt$samples &amp;lt;- factor(mt_rel_melt$samples, levels=rev(levels(mt_rel_melt$samples))) ggplot(mt_rel_melt, aes(x = samples, y = Abd, fill = Species)) + geom_bar(stat = &amp;quot;identity&amp;quot;, width = 0.7) + ylab(&amp;quot;% abundance&amp;quot;) + theme_bw() + theme(text = element_text(size=17, face = &amp;quot;bold&amp;quot;)) + scale_fill_ucscgb(alpha = 0.8) +coord_flip() ggsave(&amp;quot;./sample_kraken_composition_rel.pdf&amp;quot;, width = 10, height = 8)  </description>
+    </item>
     
     <item>
       <title>Boxplot with breaks on y-axis using Python</title>

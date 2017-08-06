@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.25.1" />
 
-  <title>Boxplot with breaks on y-axis using Python &middot; Reusable code snippets</title>
+  <title>Prepare the sequence file for making customized Kraken DB &middot; Reusable code snippets</title>
 
   
   
@@ -205,7 +205,7 @@
 
 
 <div class="header">
-  <h1>Boxplot with breaks on y-axis using Python</h1>
+  <h1>Prepare the sequence file for making customized Kraken DB</h1>
   <h2></h2>
 </div>
 <div class="content">
@@ -214,7 +214,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>06 Aug 2017, 21:59</time>
+    <time>06 Aug 2017, 22:41</time>
   </div>
 
   
@@ -225,59 +225,67 @@
 
 </div>
 
-  <blockquote>
-<p>Boxplot is extremely useful to illustrate the distribution of your data statistically. However, in some cases there are massive difference on distribution between the boxes. And we do not want to show the whole y-axis as this will make the data points unvisible especially when the figure size is limited. Here is a example showing how to depict such data in a decent way with breaks on y-aixs using <code>matplotlib</code>. <code>matplotlib</code> does not have a build-in functionality to easily  make such plot like <code>Origin</code>. Therefore I accomplished this need in a bit complex alternative way.</p>
-</blockquote>
+  
 
-<pre><code class="language-python">import seaborn as sns
-import matplotlib.pyplot as plt
-f, (ax, ax2) = plt.subplots(2, 1, sharex=True)
-plt.rcParams['svg.fonttype'] = 'none'
-plt.rcParams['pdf.fonttype'] = 42
-sns.set(font=&quot;Arial&quot;, style=&quot;whitegrid&quot;, context='paper', font_scale=2)
+<p>```python
+from Bio import SeqIO</p>
 
-# plt.style.use('fivethirtyeight')
-sns.boxplot(data=df5, x='Virus', y='percentage', hue='state', ax=ax, palette='husl', linewidth=0.5, fliersize=3.7)
-sns.boxplot(data=df5, x='Virus', y='percentage', hue='state', ax=ax2, palette='husl', linewidth=0.5, fliersize=3.7)
-ax.set_ylim(70, 100)  # outliers only
-ax2.set_ylim(0, 10)  # most of the data points
-ax.spines['bottom'].set_visible(False)
-ax.get_xaxis().set_visible(False)
+<h1 id="rename-sequences-with-gi-number">rename sequences with GI number</h1>
 
-ax2.spines['top'].set_visible(False)
-ax.xaxis.tick_top()
-ax.tick_params(labeltop='off')  # no tick labels at the top
+<p>def rename_header(seq_file, gi_list_file, out_seq_file):
+    fh = open(gi_list_file, &ldquo;r&rdquo;)
+    gi_list = [gi.strip() for gi in fh]</p>
 
-ax2.xaxis.tick_bottom()
+<pre><code>fh.close()
+n = 0
+out_seqs = []
+for seq_record in SeqIO.parse(seq_file, &quot;fasta&quot;):
+    if seq_record.seq:
+        gi_header = &quot;gi|{}|gb|{}&quot;.format(gi_list[n], seq_record.description)
+        # print(gi_header)
+        seq_record.id = gi_header #&quot;gi|&quot; + gi_list[n]
+        seq_record.description = &quot;&quot;
 
-d = .015  # size of diagonal lines on axis
-
-kwargs = dict(transform=ax.transAxes, color='k', clip_on=False)
-ax.plot((-d, +d), (-d, +d), **kwargs)        # top-left diagonal
-ax.plot((1 - d, 1 + d), (-d, +d), **kwargs)  # top-right diagonal
-
-kwargs.update(transform=ax2.transAxes)  # switch to the bottom axis
-ax2.plot((-d, +d), (1 - d, 1 + d), **kwargs)  # bottom-left diagonal
-ax2.plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)  # bottom-right diagonal
-
-plt.xticks(rotation=60)
-
+        out_seqs.append(seq_record)
+    n += 1
+            # print(seq_record)
+# print(seq_record)
+SeqIO.write(out_seqs, out_seq_file, &quot;fasta&quot;)
 </code></pre>
 
-<p>The figure needs some adjustment with vector graph editor as <code>AI</code>.</p>
+<h1 id="retrive-the-representative">retrive the representative</h1>
+
+<p>def extract_seq(seq_file, name_list, out_seq_file):
+    out_seqs = []
+    for seq_record in SeqIO.parse(seq_file, &ldquo;fasta&rdquo;):
+        for genome in name_list:
+            if genome in seq_record.description:<br />
+                out_seqs.append(seq_record)
+                # print(seq_record)
+    # print(seq_record)
+    SeqIO.write(out_seqs, out_seq_file, &ldquo;fasta&rdquo;)</p>
+
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&lsquo;:
+    # rename_header(&ldquo;gv_all_refseq.fasta&rdquo;, &ldquo;gv_all_refseq.gi&rdquo;, &ldquo;gv_all_refseq_withgi.fa&rdquo;)
+    #name_list = [&ldquo;409-05&rdquo;, &ldquo;6420B&rdquo;, &ldquo;00703Dmash&rdquo;, &ldquo;00703Bmash&rdquo;, &ldquo;55152&rdquo;, &ldquo;JCP8481B&rdquo;, &ldquo;GED7760B&rdquo;, &ldquo;HMP9231&rdquo;, &ldquo;ATCC 14019&rdquo;, &ldquo;23-12&rdquo;, &ldquo;18-4&rdquo;]
+    name_list = [&ldquo;Gardnerella vaginalis&rdquo;]</p>
+
+<pre><code>extract_seq(&quot;cpn60_ref_nut_seq.txt&quot;, name_list, &quot;gv_cpn60_ref_nut_seq.fa&quot;)
+```
+</code></pre>
 
 
   
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://dawnmy.github.io/aha/post/first/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://dawnmy.github.io/aha/post/stacked_barplot_using_ggplot/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://dawnmy.github.io/aha/post/first/">First</a>
+      <a href="https://dawnmy.github.io/aha/post/stacked_barplot_using_ggplot/">Stacked barplot using ggplot2</a>
     </nav>
     
   </div>
@@ -286,14 +294,8 @@ plt.xticks(rotation=60)
   </div>
   <div class="pure-u-10-24">
     
-    <nav class="next">
-      <a href="https://dawnmy.github.io/aha/post/stacked_barplot_using_ggplot/">Stacked barplot using ggplot2</a>
-    </nav>
-    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://dawnmy.github.io/aha/post/stacked_barplot_using_ggplot/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
