@@ -17,7 +17,8 @@
       <pubDate>Sat, 05 Aug 2017 20:49:29 +0200</pubDate>
       
       <guid>https://dawnmy.github.io/aha/post/first/</guid>
-      <description>This is a test!</description>
+      <description>This is a test!
+import pandas as pd import seaborn as sns # load csv file df = pd.read_csv(&amp;quot;file.csv&amp;quot;) # visualization sns.heatmap(df)  $ x^2 + y^2 = z $</description>
     </item>
     
   </channel>
