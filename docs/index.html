@@ -239,9 +239,7 @@
   </header>
 
   <p>
-  ```python from Bio import SeqIO
-rename sequences with GI number def rename_header(seq_file, gi_list_file, out_seq_file): fh = open(gi_list_file, &ldquo;r&rdquo;) gi_list = [gi.strip() for gi in fh]
-fh.close() n = 0 out_seqs = [] for seq_record in SeqIO.parse(seq_file, &quot;fasta&quot;): if seq_record.seq: gi_header = &quot;gi|{}|gb|{}&quot;.format(gi_list[n], seq_record.description) # print(gi_header) seq_record.id = gi_header #&quot;gi|&quot; + gi_list[n] seq_record.description = &quot;&quot; out_seqs.append(seq_record) n += 1 # print(seq_record) # print(seq_record) SeqIO.write(out_seqs, out_seq_file, &quot;fasta&quot;)  retrive the representative def extract_seq(seq_file, name_list, out_seq_file): out_seqs = [] for seq_record in SeqIO.
+  Kraken is a nice tool for taxonomy assignment for short sequencs, but the standard Kraken database is not suitable for specific purpose and the script in Kraken for customized DB construction is out of date. I usually first download the assembly_summary.tar.gz file from NCBI and extract the download link of certain genome from this file using grep or ripgrep. Then the GI or taxid will be added to the genome sequence header to be compatible to Kraken.
   </p>
 
   

@@ -227,6 +227,8 @@
 
   
 
+<p><code>Kraken</code> is a nice tool for taxonomy assignment for short sequencs, but the standard Kraken database is not suitable for specific purpose and the script in Kraken for customized DB construction is out of date. I usually first download the <code>assembly_summary.tar.gz</code> file from NCBI and extract the download link of certain genome from this file using <code>grep</code> or <code>ripgrep</code>. Then the <code>GI</code> or <code>taxid</code> will be added to the genome sequence header to be compatible to <code>Kraken</code>.</p>
+
 <p>```python
 from Bio import SeqIO</p>
 
