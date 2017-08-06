@@ -5,9 +5,37 @@
     <link>https://dawnmy.github.io/aha/</link>
     <description>Recent content on Reusable code snippets</description>
     <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 06 Aug 2017 00:27:24 +0200</lastBuildDate>
     
 	<atom:link href="https://dawnmy.github.io/aha/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python</title>
+      <link>https://dawnmy.github.io/aha/python/</link>
+      <pubDate>Sun, 06 Aug 2017 00:27:24 +0200</pubDate>
+      
+      <guid>https://dawnmy.github.io/aha/python/</guid>
+      <description>Python Python is a glue language which is used for various purposes including text processing, scientific computing and statistics.</description>
+    </item>
+    
+    <item>
+      <title>First</title>
+      <link>https://dawnmy.github.io/aha/post/first/</link>
+      <pubDate>Sat, 05 Aug 2017 20:49:29 +0200</pubDate>
+      
+      <guid>https://dawnmy.github.io/aha/post/first/</guid>
+      <description>This is a test!</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://dawnmy.github.io/aha/about/</link>
+      <pubDate>Sat, 05 Aug 2017 20:47:43 +0200</pubDate>
+      
+      <guid>https://dawnmy.github.io/aha/about/</guid>
+      <description>A headline This site reposits the code snippets which are reusable for data analysis and visualization written in Python and R. Most of them are bioinformatics relevant.</description>
+    </item>
     
   </channel>
 </rss>
