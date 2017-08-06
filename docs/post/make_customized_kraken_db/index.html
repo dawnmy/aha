@@ -225,55 +225,42 @@
 
 </div>
 
-  
+  <p><code>Kraken</code> is a nice tool for taxonomy assignment for short sequencs, but the standard Kraken database is not suitable for specific purpose and the script in Kraken for customized DB construction is out of date. I usually first download the <code>assembly_summary.tar.gz</code> file from NCBI and extract the download link of certain genome from this file using <code>grep</code> or <code>ripgrep</code>. Then the <code>GI</code> or <code>taxid</code> will be added to the genome sequence header to be compatible to <code>Kraken</code>.</p>
 
-<p><code>Kraken</code> is a nice tool for taxonomy assignment for short sequencs, but the standard Kraken database is not suitable for specific purpose and the script in Kraken for customized DB construction is out of date. I usually first download the <code>assembly_summary.tar.gz</code> file from NCBI and extract the download link of certain genome from this file using <code>grep</code> or <code>ripgrep</code>. Then the <code>GI</code> or <code>taxid</code> will be added to the genome sequence header to be compatible to <code>Kraken</code>.</p>
+<pre><code class="language-Python">from Bio import SeqIO
+# rename sequences with GI number
+def rename_header(seq_file, gi_list_file, out_seq_file):
+	fh = open(gi_list_file, &quot;r&quot;)
+	gi_list = [gi.strip() for gi in fh]
+	fh.close()
+	n = 0
+	out_seqs = []
+	for seq_record in SeqIO.parse(seq_file, &quot;fasta&quot;):
+		if seq_record.seq:
+			gi_header = &quot;gi|{}|gb|{}&quot;.format(gi_list[n], seq_record.description)
+			seq_record.id = gi_header #&quot;gi|&quot; + gi_list[n]
+			seq_record.description = &quot;&quot;
 
-<p>```python
-from Bio import SeqIO</p>
+			out_seqs.append(seq_record)
+		n += 1
+	SeqIO.write(out_seqs, out_seq_file, &quot;fasta&quot;)
+	
+# retrive the representative 
+def extract_seq(seq_file, name_list, out_seq_file):
+	out_seqs = []
+	for seq_record in SeqIO.parse(seq_file, &quot;fasta&quot;):
+		for genome in name_list:
+			if genome in seq_record.description:			
+				out_seqs.append(seq_record)
+	SeqIO.write(out_seqs, out_seq_file, &quot;fasta&quot;)
 
-<h1 id="rename-sequences-with-gi-number">rename sequences with GI number</h1>
 
-<p>def rename_header(seq_file, gi_list_file, out_seq_file):
-    fh = open(gi_list_file, &ldquo;r&rdquo;)
-    gi_list = [gi.strip() for gi in fh]</p>
-
-<pre><code>fh.close()
-n = 0
-out_seqs = []
-for seq_record in SeqIO.parse(seq_file, &quot;fasta&quot;):
-    if seq_record.seq:
-        gi_header = &quot;gi|{}|gb|{}&quot;.format(gi_list[n], seq_record.description)
-        # print(gi_header)
-        seq_record.id = gi_header #&quot;gi|&quot; + gi_list[n]
-        seq_record.description = &quot;&quot;
-
-        out_seqs.append(seq_record)
-    n += 1
-            # print(seq_record)
-# print(seq_record)
-SeqIO.write(out_seqs, out_seq_file, &quot;fasta&quot;)
-</code></pre>
-
-<h1 id="retrive-the-representative">retrive the representative</h1>
-
-<p>def extract_seq(seq_file, name_list, out_seq_file):
-    out_seqs = []
-    for seq_record in SeqIO.parse(seq_file, &ldquo;fasta&rdquo;):
-        for genome in name_list:
-            if genome in seq_record.description:<br />
-                out_seqs.append(seq_record)
-                # print(seq_record)
-    # print(seq_record)
-    SeqIO.write(out_seqs, out_seq_file, &ldquo;fasta&rdquo;)</p>
-
-<p>if <strong>name</strong> == &lsquo;<strong>main</strong>&lsquo;:
-    # rename_header(&ldquo;gv_all_refseq.fasta&rdquo;, &ldquo;gv_all_refseq.gi&rdquo;, &ldquo;gv_all_refseq_withgi.fa&rdquo;)
-    #name_list = [&ldquo;409-05&rdquo;, &ldquo;6420B&rdquo;, &ldquo;00703Dmash&rdquo;, &ldquo;00703Bmash&rdquo;, &ldquo;55152&rdquo;, &ldquo;JCP8481B&rdquo;, &ldquo;GED7760B&rdquo;, &ldquo;HMP9231&rdquo;, &ldquo;ATCC 14019&rdquo;, &ldquo;23-12&rdquo;, &ldquo;18-4&rdquo;]
-    name_list = [&ldquo;Gardnerella vaginalis&rdquo;]</p>
-
-<pre><code>extract_seq(&quot;cpn60_ref_nut_seq.txt&quot;, name_list, &quot;gv_cpn60_ref_nut_seq.fa&quot;)
-```
+if __name__ == '__main__':
+	# rename_header(&quot;gv_all_refseq.fasta&quot;, &quot;gv_all_refseq.gi&quot;, &quot;gv_all_refseq_withgi.fa&quot;)
+	#name_list = [&quot;409-05&quot;, &quot;6420B&quot;, &quot;00703Dmash&quot;, &quot;00703Bmash&quot;, &quot;55152&quot;, &quot;JCP8481B&quot;, &quot;GED7760B&quot;, &quot;HMP9231&quot;, &quot;ATCC 14019&quot;, &quot;23-12&quot;, &quot;18-4&quot;]
+	name_list = [&quot;Gardnerella vaginalis&quot;]
+	
+	extract_seq(&quot;cpn60_ref_nut_seq.txt&quot;, name_list, &quot;gv_cpn60_ref_nut_seq.fa&quot;)	
 </code></pre>
 
 
