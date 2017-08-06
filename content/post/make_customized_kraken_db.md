@@ -4,8 +4,9 @@ date: 2017-08-06T22:41:57+02:00
 draft: false
 ---
 
-```python
 
+
+```python
 from Bio import SeqIO
 # rename sequences with GI number
 def rename_header(seq_file, gi_list_file, out_seq_file):
