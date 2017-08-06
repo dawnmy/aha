@@ -19,7 +19,7 @@ paginate = 10
 
 [params]
   # Shown in the home page
-  subtitle = "Reusable code snippets"
+  # subtitle = "Reusable code snippets"
   #brand = "Blackburn"
   googleAnalytics = "UA-44649121-2"
   disqus = "dreamcatcher-1"
@@ -52,11 +52,6 @@ paginate = 10
     weight = 2
     identifier = "about"
     url = "/about/"
-  [[menu.main]]
-    name = "Contact"
-    pre = "<i class='fa fa-phone fa-fw'></i>"
-    weight = 3
-    url = "/contact/"
 
 [social]
   # Link your social networking accounts to the side menu
