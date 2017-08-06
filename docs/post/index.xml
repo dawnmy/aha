@@ -18,7 +18,7 @@
       
       <guid>https://dawnmy.github.io/aha/post/first/</guid>
       <description>This is a test!
-import pandas as pd import seaborn as sns # load csv file df = pd.read_csv(&amp;quot;file.csv&amp;quot;) # visualization sns.heatmap(df)  $ x^2 + y^2 = z $</description>
+import pandas as pd import seaborn as sns # load csv file df = pd.read_csv(&amp;quot;file.csv&amp;quot;) # visualization sns.heatmap(df)  $$ x^2 + y^2 = z $$</description>
     </item>
     
   </channel>
