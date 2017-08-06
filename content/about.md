@@ -2,6 +2,7 @@
 title: "About"
 date: 2017-08-05T20:47:43+02:00
 draft: false
+type: page
 ---
 
 ## A headline
