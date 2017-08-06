@@ -5,8 +5,8 @@ draft: false
 ---
 
 ```python
-from Bio import SeqIO
 
+from Bio import SeqIO
 # rename sequences with GI number
 def rename_header(seq_file, gi_list_file, out_seq_file):
 	fh = open(gi_list_file, "r")
