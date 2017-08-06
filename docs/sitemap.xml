@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://dawnmy.github.io/aha/post/boxplot_with_breaks/</loc>
+    <lastmod>2017-08-06T21:59:26+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://dawnmy.github.io/aha/python/</loc>
     <lastmod>2017-08-06T00:27:24+02:00</lastmod>
   </url>
@@ -24,13 +29,13 @@
   
   <url>
     <loc>https://dawnmy.github.io/aha/post/</loc>
-    <lastmod>2017-08-05T20:49:29+02:00</lastmod>
+    <lastmod>2017-08-06T21:59:26+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dawnmy.github.io/aha/</loc>
-    <lastmod>2017-08-06T00:27:24+02:00</lastmod>
+    <lastmod>2017-08-06T21:59:26+02:00</lastmod>
     <priority>0</priority>
   </url>
   

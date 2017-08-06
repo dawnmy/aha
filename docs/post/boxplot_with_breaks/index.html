@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.25.1" />
 
-  <title>Posts &middot; Reusable code snippets</title>
+  <title>Boxplot with breaks on y-axis using Python &middot; Reusable code snippets</title>
 
   
   
@@ -36,8 +36,6 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 
   
-  
-  <link rel="alternate" type="application/rss+xml" title="Reusable code snippets" href="https://dawnmy.github.io/aha/post/index.xml" />
   
 
   
@@ -100,10 +98,6 @@
   <div class="pure-menu social">
   <ul class="pure-menu-list">
 
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://dawnmy.github.io/aha/post/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
-    </li>
     
 
     
@@ -211,21 +205,115 @@
 
 
 <div class="header">
-  <h1>Posts</h1>
+  <h1>Boxplot with breaks on y-axis using Python</h1>
+  <h2></h2>
 </div>
 <div class="content">
-  
-  <h2>2017</h2>
-  <ul>
-  
-    <li><time>06 Aug 2017, 21:59</time> - <a href="https://dawnmy.github.io/aha/post/boxplot_with_breaks/">Boxplot with breaks on y-axis using Python</a></li>
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>06 Aug 2017, 21:59</time>
+  </div>
 
   
-    <li><time>05 Aug 2017, 20:49</time> - <a href="https://dawnmy.github.io/aha/post/first/">First</a></li>
 
   
-  </ul>
+
   
+
+</div>
+
+  <blockquote>
+<p>Boxplot is extremely useful to illustrate the distribution of your data statistically. However, in some cases there are massive difference on distribution between the boxes. And we do not want to show the whole y-axis as this will make the data points unvisible especially when the figure size is limited. Here is a example showing how to depict such data in a decent way with breaks on y-aixs using <code>matplotlib</code>. <code>matplotlib</code> does not have a build-in functionality to easily  make such plot like <code>Origin</code>. Therefore I accomplished this need in a bit complex alternative way.</p>
+</blockquote>
+
+<pre><code class="language-python">import seaborn as sns
+import matplotlib.pyplot as plt
+f, (ax, ax2) = plt.subplots(2, 1, sharex=True)
+plt.rcParams['svg.fonttype'] = 'none'
+plt.rcParams['pdf.fonttype'] = 42
+sns.set(font=&quot;Arial&quot;, style=&quot;whitegrid&quot;, context='paper', font_scale=2)
+
+# plt.style.use('fivethirtyeight')
+sns.boxplot(data=df5, x='Virus', y='percentage', hue='state', ax=ax, palette='husl', linewidth=0.5, fliersize=3.7)
+sns.boxplot(data=df5, x='Virus', y='percentage', hue='state', ax=ax2, palette='husl', linewidth=0.5, fliersize=3.7)
+ax.set_ylim(70, 100)  # outliers only
+ax2.set_ylim(0, 10)  # most of the data points
+ax.spines['bottom'].set_visible(False)
+ax.get_xaxis().set_visible(False)
+
+ax2.spines['top'].set_visible(False)
+ax.xaxis.tick_top()
+ax.tick_params(labeltop='off')  # no tick labels at the top
+
+ax2.xaxis.tick_bottom()
+
+d = .015  # size of diagonal lines on axis
+
+kwargs = dict(transform=ax.transAxes, color='k', clip_on=False)
+ax.plot((-d, +d), (-d, +d), **kwargs)        # top-left diagonal
+ax.plot((1 - d, 1 + d), (-d, +d), **kwargs)  # top-right diagonal
+
+kwargs.update(transform=ax2.transAxes)  # switch to the bottom axis
+ax2.plot((-d, +d), (1 - d, 1 + d), **kwargs)  # bottom-left diagonal
+ax2.plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)  # bottom-right diagonal
+
+plt.xticks(rotation=60)
+
+</code></pre>
+
+<p>The figure needs some adjustment with vector graph editor as <code>AI</code>.</p>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://dawnmy.github.io/aha/post/first/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://dawnmy.github.io/aha/post/first/">First</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'dreamcatcher-1';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
 </div>
 
 <script type="text/javascript"
