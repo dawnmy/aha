@@ -6,10 +6,25 @@
     <description>Recent content on Reusable code snippets</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2017. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 06 Aug 2017 22:41:57 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 29 Oct 2017 21:59:26 +0200</lastBuildDate>
     
 	<atom:link href="https://dawnmy.github.io/aha/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>贝叶斯统计与MCMC</title>
+      <link>https://dawnmy.github.io/aha/post/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%8Emcmc/</link>
+      <pubDate>Sun, 29 Oct 2017 21:59:26 +0200</pubDate>
+      
+      <guid>https://dawnmy.github.io/aha/post/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%8Emcmc/</guid>
+      <description>&amp;ldquo;When the facts change, I change my mind. What do you do, sir?&amp;rdquo; &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; - by John Maynard Keynes
+ 贝叶斯思想的核心是将参数 $\theta$ 当成一个变量，我们不完全相信先验的信息而是基于先验信息并通过真实观测数据来不断更新参数值而得到参数的后验分布，这一点是与频率学派思想的最大区别。
+贝叶斯定理 $P(Y|X)$为已知X发生后Y发生的概率，根据贝叶斯定理， $$P( P(Y|X) = \frac{P(X\bigcap{Y})}{P(X)}=\frac{P(X|Y)\times{P(Y)}}{P(X)} $$
+其中，
+ $P(X\bigcap{Y})$就是联合概率（joint probability），表示$X$，$Y$都发生的概率。 $P(X)$是$X$的先验概率（prior probability）或边缘概率（marginal probability）。 $P(Y)$是$Y$的先验概率或边缘概率。 $P(Y|X)$也叫后验概率（posterior probability）。  假设$Y$是离散的变量，$Y \in {y1,y2,&amp;hellip;,yi,&amp;hellip;,yn}$ ，上式可以改写为 $$ P(Y=yi|X) = \frac{P(X|Y=yi){P(Y=yi)}}{\sum{i=1}^n{P(X|Y=yi)P(Y=yi)}} $$ 如果用常用的贝叶斯变量名写法，$x$ 表示观测到的数据，$\theta$ 表示参数： $$ \pi(\theta{i}|x) = \frac{f(x|\theta{i}){\pi(\theta{i})}}{\sum{i=1}^n{f(x|\theta{i})\pi(\theta{i})}} $$
+其中，$\pi$ 表示参数的概率分布函数，$\pi(\theta{i})$ 是参数的先验概率，$\pi(\theta{i}|x)$ 表示后验概率，$f(x|\theta{i})$表示我们观测的样本数据的分布也就是似然函数（likelihood function）。
+上面公式中的参数$\theta$为离散的变量，当参数$\theta$为连续时，我们就不是用求和 $\sum$ 而是积分$\int$了。 $$ \pi(\theta)=\int\Theta{f(x|\theta)\pi(\theta)}d\theta $$ 于是： $$ \pi(\theta|x) = \frac{f(x|\theta){\pi(\theta)}}{\int{\Theta}{f(x|\theta)\pi(\theta)}d\theta} $$</description>
+    </item>
     
     <item>
       <title>Prepare the sequence file for making customized Kraken DB</title>
@@ -65,21 +80,6 @@ import pandas as pd import seaborn as sns # load csv file df = pd.read_csv(&amp;
       <guid>https://dawnmy.github.io/aha/about/</guid>
       <description>About the website This site reposits the code snippets which are reusable for data analysis and visualization written in Python and R. Most of them are bioinformatics relevant.
 About me I am a PhD student in HZI working on microbime and bioinformatics. Massive NGS data processing, statistics, data visualization are my daily work which I found is fun for me. For my daily work, I use Python, R, Linux shell, Golang.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://dawnmy.github.io/aha/post/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%8Emcmc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://dawnmy.github.io/aha/post/%E8%B4%9D%E5%8F%B6%E6%96%AF%E4%B8%8Emcmc/</guid>
-      <description>&amp;ldquo;When the facts change, I change my mind. What do you do, sir?&amp;rdquo; &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp; - by John Maynard Keynes
- 贝叶斯思想的核心是将参数 $\theta$ 当成一个变量，我们不完全相信先验的信息而是基于先验信息并通过真实观测数据来不断更新参数值而得到参数的后验分布，这一点是与频率学派思想的最大区别。
-贝叶斯定理 $P(Y|X)$为已知X发生后Y发生的概率，根据贝叶斯定理， $$P( P(Y|X) = \frac{P(X\bigcap{Y})}{P(X)}=\frac{P(X|Y)\times{P(Y)}}{P(X)} $$
-其中，
- $P(X\bigcap{Y})$就是联合概率（joint probability），表示$X$，$Y$都发生的概率。 $P(X)$是$X$的先验概率（prior probability）或边缘概率（marginal probability）。 $P(Y)$是$Y$的先验概率或边缘概率。 $P(Y|X)$也叫后验概率（posterior probability）。  假设$Y$是离散的变量，$Y \in {y1,y2,&amp;hellip;,yi,&amp;hellip;,yn}$ ，上式可以改写为 $$ P(Y=yi|X) = \frac{P(X|Y=yi){P(Y=yi)}}{\sum{i=1}^n{P(X|Y=yi)P(Y=yi)}} $$ 如果用常用的贝叶斯变量名写法，$x$ 表示观测到的数据，$\theta$ 表示参数： $$ \pi(\theta{i}|x) = \frac{f(x|\theta{i}){\pi(\theta{i})}}{\sum{i=1}^n{f(x|\theta{i})\pi(\theta{i})}} $$
-其中，$\pi$ 表示参数的概率分布函数，$\pi(\theta{i})$ 是参数的先验概率，$\pi(\theta{i}|x)$ 表示后验概率，$f(x|\theta{i})$表示我们观测的样本数据的分布也就是似然函数（likelihood function）。
-上面公式中的参数$\theta$为离散的变量，当参数$\theta$为连续时，我们就不是用求和 $\sum$ 而是积分$\int$了。 $$ \pi(\theta)=\int\Theta{f(x|\theta)\pi(\theta)}d\theta $$ 于是： $$ \pi(\theta|x) = \frac{f(x|\theta){\pi(\theta)}}{\int{\Theta}{f(x|\theta)\pi(\theta)}d\theta} $$</description>
     </item>
     
   </channel>

@@ -1,3 +1,10 @@
+
+---
+title: "贝叶斯统计与MCMC"
+date: 2017-10-29T21:59:26+02:00
+draft: false
+---
+
 >"When the facts change, I change my mind. What do you do, sir?" 
 > &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;                 - by John Maynard Keynes
 
