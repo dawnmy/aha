@@ -69,7 +69,9 @@ P(\theta_1|x)=\int_{\Theta_2}{P(\theta_1|y,\theta_2)P(\theta_2|y)}d\theta_2
 $$
 
 ### 共轭分布
+
 - $\beta$分布
+
 如果观测数据服从二项分布 $x \sim B(n,\theta)$，先验分布服从 $\beta$ 分布 $\pi(\theta)\sim Beta(a, b)$，则后验分布 $\pi(\theta|x) \sim Beta(x+a,n-x+b)$。这时候似然函数二项分布的共轭先验分布为$\beta$分布。在贝叶斯统计中，如果后验分布与先验分布属于同类，则先验分布与后验分布被称为共轭分布，而先验分布被称为似然函数的共轭先验。
 共轭先验的好处是我们不需要去计算贝叶斯公式中的复杂的积分也就是式中的分母(归一化项)来计算后验分布。
 
@@ -88,6 +90,7 @@ $$
 
 
 ### 非共轭先验时后验分布的获得
+
 - 通过概率密度（PDF）函数的近似函数，变分推断（variational inference）
 - 格点近似法（grid approximation）来计算积分，仅适用于变量少且样本空间小的情况。
 - 基于反CDF (cumulative distribution function) 函数 (inverse CDF) 采样。
@@ -95,9 +98,13 @@ $$
 
 
 ### Sampling methods
+
 #### Rejection sampling
+
 此方法最出名的例子是布丰投针估算圆周率，该方法的实现是首先构建一个建议分布$q(x)$，然后在建议分布中均匀取样，落在待估函数$p(x)$内的样本被接受，以外的被拒绝。该方法能工作，但是会导致大量无效采样，浪费计算资源，因此其改进版Adaptive Rejection Sampling（ARS）被开发出来，ARS通过对待估函数分段做切线，切线围成的区域为建议分布。ARS仅对于concave或者log-concave的函数十分有效。
+
 #### Importance sampling and adaptive importance sampling
+
 $x$是取自$p(x)$中的样本，$x \sim p(x)$，现在我们想求$f(x)$的期望，
 
 $$
@@ -118,6 +125,7 @@ $$
 其中$p(x^{(i)})/q(x^{(i)})=w(x^{(i)})$ 就是重要性权重。
 
 #### CDF反函数均匀采样
+
 如果已知后验分布的CDF的反函数$CDF^{-1}$，我们可以均匀采样 $CDF(x) = u \sim U(0,1)$，然后通过$CDF$的反函数得到对应的$x$的样本。
 
 $$CDF(x)=\int_{-\infty}^{x}PDF(t)dt$$
@@ -128,6 +136,7 @@ x=CDF^{-1}(u)
 $$
 
 #### MCMC
+
 前面三种采样方法都有蒙特卡洛（MC）的思想，接下来我们介绍的是MCMC方法，多了一个MC。MCMC全称马尔可夫链蒙特卡洛方法（Markov chain Monte Carlo, MCMC）是通过构建状态转移概率矩阵使其平稳分布为待估参数的后验分布。满足细致平衡条件的状态转移概率矩阵可以收敛到指定的概率分布。
 MCMC方法满足细致平衡原则 （detailed balance principle），也就是$x$到$x^*$的概率等于$x^*$到$x$的概率：
 
@@ -147,9 +156,10 @@ $$P_{xx^*}=min(1,\frac{\pi(x^*)q(x|x^*)}{\pi(x)q(x^*|x)})$$
 
 $u \sim U(0,1)$，如果 $u < P_{xx^*}$，则$X_{t+1}=x^*$，否则$X_{t+1}=x$
 
-为了提高MH方法的效率，很多改进方法被提出来，其中很常见的是Hybrid MH。
+为了提高MH方法的效率，很多改进方法被提出来，其中很常见的是Hybrid MH，比如结合梯度信息来决定跳转的步长。
 
 - Gibbs
+
 Gibbs可能是我们最常听说的采样方法了，她是MH方法接受概率为1时的特例。这样收敛更快，效率更高。Gibbs采样最适合高维变量的后验分布采样。比如，服从$P(x,y,z)$。
 举个栗子，
 给出一个初始样本 $(x^{(1)}, y^{(1)}, z^{(1)})^T$，我们希望采样取自$P(x, y, z)$ 的样本$(x^{(2)}, y^{(2)}, z^{(2)})^T$，$ (x^{(3)}, y^{(3)}, z^{(3)})^T$ .. $(x^{(N)}, y^{(N)}, z^{(N)})^T$
@@ -177,14 +187,17 @@ $$ P(x,y,z|u)=P(x|u)P(y|u)P(z|u)$$
 使得 $x,y,z$ 独立。
 
 - slice sampling
+
 其实slice sampling也属于MCMC，他将要采样的复杂分布分片成
 
 
 #### other sampling methods
+
 - nested sampling
 
 
 ### MCMC方法的使用
+
 - PyMC3
 - Stan
 - winBUGS
