@@ -12,19 +12,19 @@ draft: false
 
 ### 贝叶斯定理
 
-$P(Y|X)$为已知X发生后Y发生的概率，根据贝叶斯定理，
+$P(Y|X)$ 为已知X发生后Y发生的概率，根据贝叶斯定理，
   $$P(
   P(Y|X) = \frac{P(X\bigcap{Y})}{P(X)}=\frac{P(X|Y)\times{P(Y)}}{P(X)}
   $$
  
  其中，
  
-- $P(X\bigcap{Y})$就是联合概率（joint probability），表示$X$，$Y$都发生的概率。
-- $P(X)$是$X$的先验概率（prior probability）或边缘概率（marginal probability）。
-- $P(Y)$是$Y$的先验概率或边缘概率。
-- $P(Y|X)$也叫后验概率（posterior probability）。
+- $P(X\bigcap{Y})$ 就是联合概率（joint probability），表示 $X$ ， $Y$ 都发生的概率。
+- $P(X)$ 是 $X$ 的先验概率（prior probability）或边缘概率（marginal probability）。
+- $P(Y)$ 是 $Y$ 的先验概率或边缘概率。
+- $P(Y|X)$ 也叫后验概率（posterior probability）。
 
-假设$Y$是离散的变量，$Y \in \{y1,y2,...,yi,...,yn\}$ ，上式可以改写为
+假设$Y$是离散的变量， $Y \in \{y1,y2,...,yi,...,yn\}$ ，上式可以改写为
  $$
   P(Y=yi|X) = \frac{P(X|Y=yi){P(Y=yi)}}{\sum_{i=1}^n{P(X|Y=yi)P(Y=yi)}}
   $$
