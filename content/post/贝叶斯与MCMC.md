@@ -5,8 +5,7 @@ date: 2017-10-29T21:59:26+02:00
 draft: false
 ---
 
->"When the facts change, I change my mind. What do you do, sir?" 
-> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;                 - by John Maynard Keynes
+>"When the facts change, I change my mind. What do you do, sir?"  - by John Maynard Keynes
 
 贝叶斯思想的核心是将参数 $\theta$ 当成一个变量，我们不完全相信先验的信息而是基于先验信息并通过真实观测数据来不断更新参数值而得到参数的后验分布，这一点是与频率学派思想的最大区别。
 
