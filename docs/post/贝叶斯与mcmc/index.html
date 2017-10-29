@@ -249,36 +249,47 @@
 <li>$P(Y|X)$ 也叫后验概率（posterior probability）。</li>
 </ul>
 
-<p>假设$Y$是离散的变量， $Y \in {y1,y2,&hellip;,yi,&hellip;,yn}$ ，上式可以改写为
- $$
-  P(Y=yi|X) = \frac{P(X|Y=yi){P(Y=yi)}}{\sum<em>{i=1}^n{P(X|Y=yi)P(Y=yi)}}
-  $$
-如果用常用的贝叶斯变量名写法，$x$ 表示观测到的数据，$\theta$ 表示参数：
- $$
-  \pi(\theta{i}|x) = \frac{f(x|\theta{i}){\pi(\theta{i})}}{\sum</em>{i=1}^n{f(x|\theta{i})\pi(\theta{i})}}
+<p>假设$Y$是离散的变量， $Y \in {y1,y2,&hellip;,yi,&hellip;,yn}$ ，上式可以改写为</p>
+
+<p>$$
+  P(Y=yi|X) = \frac{P(X|Y=yi){P(Y=yi)}}{\sum_{i=1}^n{P(X|Y=yi)P(Y=yi)}}
+$$</p>
+
+<p>如果用常用的贝叶斯变量名写法， $x$ 表示观测到的数据， $\theta$ 表示参数：</p>
+
+<p>$$
+  \pi(\theta{i}|x) = \frac{f(x|\theta{i}){\pi(\theta{i})}}{\sum_{i=1}^n{f(x|\theta{i})\pi(\theta{i})}}
   $$</p>
 
 <p>其中，$\pi$ 表示参数的概率分布函数，$\pi(\theta{i})$ 是参数的先验概率，$\pi(\theta{i}|x)$ 表示后验概率，$f(x|\theta{i})$表示我们观测的样本数据的分布也就是似然函数（likelihood function）。</p>
 
-<p>上面公式中的参数$\theta$为离散的变量，当参数$\theta$为连续时，我们就不是用求和 $\sum$ 而是积分$\int$了。
-$$
-\pi(\theta)=\int<em>\Theta{f(x|\theta)\pi(\theta)}d\theta
-$$
-于是：
- $$
-  \pi(\theta|x) = \frac{f(x|\theta){\pi(\theta)}}{\int</em>{\Theta}{f(x|\theta)\pi(\theta)}d\theta}
+<p>上面公式中的参数$\theta$为离散的变量，当参数$\theta$为连续时，我们就不是用求和 $\sum$ 而是积分$\int$了。</p>
+
+<p>$$
+\pi(\theta)=\int_\Theta{f(x|\theta)\pi(\theta)}d\theta
+$$</p>
+
+<p>于是：</p>
+
+<p>$$
+  \pi(\theta|x) = \frac{f(x|\theta){\pi(\theta)}}{\int_{\Theta}{f(x|\theta)\pi(\theta)}d\theta}
   $$</p>
 
-<p>对于多变量参数，假设 $\theta\in{\theta_1, \theta_2}$，则条件概率的计算如下：
-$$
+<p>对于多变量参数，假设 $\theta\in{\theta_1, \theta_2}$，则条件概率的计算如下：</p>
+
+<p>$$
 P(\theta<em>1|x)=\int</em>{\Theta_2}{P(\theta_1,\theta_2|y)}d\theta_2
-$$
-因为：
-$$
+$$</p>
+
+<p>因为：</p>
+
+<p>$$
 P(\theta_1,\theta_2|y)=P(\theta_1|y,\theta_2)P(\theta_2|y)
-$$
-于是：
-$$
+$$</p>
+
+<p>于是：</p>
+
+<p>$$
 P(\theta<em>1|x)=\int</em>{\Theta_2}{P(\theta_1|y,\theta_2)P(\theta_2|y)}d\theta_2
 $$</p>
 
@@ -319,42 +330,58 @@ $$</p>
 
 <h4 id="importance-sampling-and-adaptive-importance-sampling">Importance sampling and adaptive importance sampling</h4>
 
-<p>$x$是取自$p(x)$中的样本，$x \sim p(x)$，现在我们想求$f(x)$的期望，
-$$
+<p>$x$是取自$p(x)$中的样本，$x \sim p(x)$，现在我们想求$f(x)$的期望，</p>
+
+<p>$$
 E(f(x))=\int<em>x{f(x)p(x)}dx <br />
 x^{(i)} \sim p(x^{(i)}) <br />
 \hat{E}(f(x))=\frac{1}{N}\sum</em>{i=1}^Nf(x^{(i)})
-$$
-而往往，从$p(x)$ 中采样是有困难的，尤其当密度函数非常复杂的时候，于是我们引入简单的建议密度函数$q(x)$，采样$x \sim q(x)$，
-于是
-$$
+$$</p>
+
+<p>而往往，从$p(x)$ 中采样是有困难的，尤其当密度函数非常复杂的时候，于是我们引入简单的建议密度函数$q(x)$，采样$x \sim q(x)$，
+于是</p>
+
+<p>$$
 E(f(x))=\int<em>x{f(x)\frac{p(x)}{q(x)}q(x)}dx <br />
 x^{(i)} \sim q(x^{(i)}) <br />
 \hat{E}(f(x))=\frac{1}{N}\sum</em>{i=1}^Nf(x^{(i)}\frac{p(x^{(i)})}{q(x^{(i)})})
-$$
-其中$p(x^{(i)})/q(x^{(i)})=w(x^{(i)})$ 就是重要性权重。</p>
+$$</p>
+
+<p>其中$p(x^{(i)})/q(x^{(i)})=w(x^{(i)})$ 就是重要性权重。</p>
 
 <h4 id="cdf反函数均匀采样">CDF反函数均匀采样</h4>
 
-<p>如果已知后验分布的CDF的反函数$CDF^{-1}$，我们可以均匀采样 $CDF(x) = u \sim U(0,1)$，然后通过$CDF$的反函数得到对应的$x$的样本。
-$$CDF(x)=\int_{-\infty}^{x}PDF(t)dt$$</p>
+<p>如果已知后验分布的CDF的反函数$CDF^{-1}$，我们可以均匀采样 $CDF(x) = u \sim U(0,1)$，然后通过$CDF$的反函数得到对应的$x$的样本。</p>
 
-<p>$$u \sim U(0,1)<br />
-x=CDF^{-1}(u)$$</p>
+<p>$$CDF(x)=\int_{-\infty}^{x}PDF(t)dt$$</p>
+
+<p>$$
+u \sim U(0,1)<br />
+x=CDF^{-1}(u)
+$$</p>
 
 <h4 id="mcmc">MCMC</h4>
 
 <p>前面三种采样方法都有蒙特卡洛（MC）的思想，接下来我们介绍的是MCMC方法，多了一个MC。MCMC全称马尔可夫链蒙特卡洛方法（Markov chain Monte Carlo, MCMC）是通过构建状态转移概率矩阵使其平稳分布为待估参数的后验分布。满足细致平衡条件的状态转移概率矩阵可以收敛到指定的概率分布。
-MCMC方法满足细致平衡原则 （detailed balance principle），也就是$x$到$x^<em>$的概率等于$x^</em>$到$x$的概率：$$\pi(x)k(x\to{x^<em>})=\pi(x^</em>)k(x^*\to{x})$$
-其中，$\pi(x)$为出现样本$x$的概率，$k$为transition kernel函数表示样本间转移的概率。满足该原则的状态转移概率矩阵才能使得后验分布收敛。</p>
+MCMC方法满足细致平衡原则 （detailed balance principle），也就是$x$到$x^<em>$的概率等于$x^</em>$到$x$的概率：</p>
+
+<p>$$\pi(x)k(x\to{x^<em>})=\pi(x^</em>)k(x^*\to{x})$$</p>
+
+<p>其中，$\pi(x)$为出现样本$x$的概率，$k$为transition kernel函数表示样本间转移的概率。满足该原则的状态转移概率矩阵才能使得后验分布收敛。</p>
 
 <ul>
 <li>Metropolis-Hastings</li>
 </ul>
 
-<p>取样（转移概率）: $$x^* \sim q(x^<em>|x)$$
-接受概率：$$P_{xx^</em>}=min(1,\frac{\pi(x^<em>)q(x|x^</em>)}{\pi(x)q(x^<em>|x)})$$
-$u \sim U(0,1)$，如果 $u &lt; P_{xx^</em>}$，则$X<em>{t+1}=x^*$，否则$X</em>{t+1}=x$</p>
+<p>取样（转移概率）:</p>
+
+<p>$$x^* \sim q(x^*|x)$$</p>
+
+<p>接受概率：</p>
+
+<p>$$P_{xx^<em>}=min(1,\frac{\pi(x^</em>)q(x|x^<em>)}{\pi(x)q(x^</em>|x)})$$</p>
+
+<p>$u \sim U(0,1)$，如果 $u &lt; P<em>{xx^*}$，则$X</em>{t+1}=x^*$，否则$X_{t+1}=x$</p>
 
 <p>为了提高MH方法的效率，很多改进方法被提出来，其中很常见的是Hybrid MH。</p>
 
@@ -363,22 +390,29 @@ $u \sim U(0,1)$，如果 $u &lt; P_{xx^</em>}$，则$X<em>{t+1}=x^*$，否则$X<
 Gibbs可能是我们最常听说的采样方法了，她是MH方法接受概率为1时的特例。这样收敛更快，效率更高。Gibbs采样最适合高维变量的后验分布采样。比如，服从$P(x,y,z)$。
 举个栗子，
 给出一个初始样本 $(x^{(1)}, y^{(1)}, z^{(1)})^T$，我们希望采样取自$P(x, y, z)$ 的样本$(x^{(2)}, y^{(2)}, z^{(2)})^T$，$ (x^{(3)}, y^{(3)}, z^{(3)})^T$ .. $(x^{(N)}, y^{(N)}, z^{(N)})^T$
-我们定义
-$$
+我们定义</li>
+</ul>
+
+<p>$$
 x^{(2)} \sim P(x|y^{(1)}, z^{(1)}) <br />
 y^{(2)} \sim P(y|x^{(2)}, z^{(1)}) <br />
 z^{(2)} \sim P(z|x^{(2)}, y^{(2)}) <br />
 x^{(3)} \sim P(x|y^{(2)}, z^{(2)}) <br />
 y^{(3)} \sim P(y|x^{(3)}, z^{(2)}) <br />
 z^{(3)} \sim P(z|x^{(3)}, y^{(3)}) <br />
-$$
-该定义符合细致平衡条件，这里就不详细证明了。</li>
-</ul>
+$$</p>
 
-<p>这种原始的Gibbs采样显然是不可能并行化的，因为下一步的采样依赖于上一步的结果。于是很多改进方法被开发出来，比如引入辅助变量$u$，使得概率密度函数为$P(x,y,z,u)$
-$$ u \sim P(u|x,y,z)$$
-于是，
-$$ P(x,y,z|u)=P(x|u)P(y|u)P(z|u)$$ 使得 $x,y,z$ 独立。</p>
+<p>该定义符合细致平衡条件，这里就不详细证明了。</p>
+
+<p>这种原始的Gibbs采样显然是不可能并行化的，因为下一步的采样依赖于上一步的结果。于是很多改进方法被开发出来，比如引入辅助变量$u$，使得概率密度函数为$P(x,y,z,u)$</p>
+
+<p>$$ u \sim P(u|x,y,z)$$</p>
+
+<p>于是，</p>
+
+<p>$$ P(x,y,z|u)=P(x|u)P(y|u)P(z|u)$$</p>
+
+<p>使得 $x,y,z$ 独立。</p>
 
 <ul>
 <li>slice sampling
