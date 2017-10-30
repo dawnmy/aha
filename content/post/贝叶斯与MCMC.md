@@ -78,12 +78,6 @@ $$
 
 - 常用共轭先验
 
-Name    | Age
---------|------
-Bob     | 27
-Alice   | 23
-
-
 | Likelihood| Conjugate prior distribution |
 | --- | --- | --- |
 | Binomial | Beta |
@@ -248,7 +242,7 @@ $$
 
 
 
-###参考资料：
+#### 参考资料：
 
 + Doing Bayesian Data Analysis (Book)
 + Bayesian Data Analysis (Book)
