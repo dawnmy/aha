@@ -243,7 +243,7 @@ $$
 
 
 
-####参考资料：
+###参考资料：
 
 + Doing Bayesian Data Analysis (Book)
 + Bayesian Data Analysis (Book)
