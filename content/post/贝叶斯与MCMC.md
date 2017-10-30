@@ -53,6 +53,10 @@ $$
 对于多变量参数，假设 $\theta\in\{\theta_1, \theta_2\}$，则条件概率的计算如下：
 
 $$
+P(\theta_1|x)
+$$
+
+$$
 P(\theta_1|x)=\int_{\Theta_2}{P(\theta_1,\theta_2|y)}d\theta_2
 $$
 
