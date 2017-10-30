@@ -283,7 +283,7 @@ P(\theta_1|x)
 $$</p>
 
 <p>$$
-P(\theta<em>1|x)=\int</em>{\Theta_2}{P(\theta_1,\theta_2|y)}
+P(\theta_1|x)=d\theta_2
 $$</p>
 
 <p>因为：</p>
@@ -530,10 +530,18 @@ and Bayesian Methods for Hackers</a></li>
 </div>
 
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true}
-});
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
 </script>
+
 <script type="text/javascript"
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
