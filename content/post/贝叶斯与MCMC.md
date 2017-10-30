@@ -139,10 +139,10 @@ $$
 #### MCMC
 
 前面三种采样方法都有蒙特卡洛（MC）的思想，接下来我们介绍的是MCMC方法，多了一个MC。MCMC全称马尔可夫链蒙特卡洛方法（Markov chain Monte Carlo, MCMC）是通过构建状态转移概率矩阵使其平稳分布为待估参数的后验分布。满足细致平衡条件的状态转移概率矩阵可以收敛到指定的概率分布。
-MCMC方法满足细致平衡原则 （detailed balance principle），也就是 $x$ 到 $x^{*}$ 的概率等于 $x^{*}$ 到 $x$ 的概率：
+MCMC方法满足细致平衡原则 （detailed balance principle），也就是 $x$ 到 $x^{\ast}$ 的概率等于 $x^{\ast}$ 到 $x$ 的概率：
 
 $$
-\pi(x)k(x\to{x^{*}})=\pi(x^{*})k(x^{*}\to{x})
+\pi(x)k(x\to{x^{\ast}})=\pi(x^{\ast})k(x^{\ast}\to{x})
 $$
 
 其中， $\pi(x)$ 为出现样本 $x$ 的概率， $k$ 为transition kernel函数表示样本间转移的概率。满足该原则的状态转移概率矩阵才能使得后验分布收敛。
@@ -151,13 +151,13 @@ $$
 
 取样（转移概率）: 
 
-$$x^{*} \sim q(x^{*}|x)$$
+$$x^{\ast} \sim q(x^{\ast}|x)$$
 
 接受概率：
 
-$$P\_{xx^{*}}=min(1,\frac{\pi(x^{*})q(x|x^{*})}{\pi(x)q(x^{*}|x)})$$
+$$P\_{xx^{\ast}}=min(1,\frac{\pi(x^{\ast})q(x|x^{\ast})}{\pi(x)q(x^{\ast}|x)})$$
 
-$u \sim U(0,1)$，如果 $u < P_{xx^{*}}$，则 $X\_{t+1}=x^{*}$ ，否则 $X_{t+1}=x$
+$u \sim U(0,1)$，如果 $u < P_{xx^{\ast}}$，则 $X\_{t+1}=x^{\ast}$ ，否则 $X_{t+1}=x$
 
  为了提高MH方法的效率，很多改进方法被提出来，其中很常见的是Hybrid MH，比如结合梯度信息来决定跳转的步长。
 
