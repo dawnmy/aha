@@ -1,6 +1,6 @@
 
 ---
-title: "贝叶斯统计与MCMC"
+title: "贝叶斯统计与MCMC (1)"
 date: 2017-10-29T21:59:26+02:00
 draft: false
 ---
@@ -77,6 +77,11 @@ $$
 共轭先验的好处是我们不需要去计算贝叶斯公式中的复杂的积分也就是式中的分母(归一化项)来计算后验分布。
 
 - 常用共轭先验
+
+Name    | Age
+--------|------
+Bob     | 27
+Alice   | 23
 
 
 | Likelihood| Conjugate prior distribution |
