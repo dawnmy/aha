@@ -41,13 +41,13 @@ $$
 上面公式中的参数$\theta$为离散的变量，当参数$\theta$为连续时，我们就不是用求和 $\sum$ 而是积分$\int$了。
 
 $$
-\pi(\theta)=\int_\Theta{f(x|\theta)\pi(\theta)}d\theta
+\pi(\theta)=\int\_\Theta{f(x|\theta)\pi(\theta)}d\theta
 $$
 
 于是：
 
  $$
-  \pi(\theta|x) = \frac{f(x|\theta){\pi(\theta)}}{\int_{\Theta}{f(x|\theta)\pi(\theta)}d\theta}
+  \pi(\theta|x) = \frac{f(x|\theta){\pi(\theta)}}{\int\_{\Theta}{f(x|\theta)\pi(\theta)}d\theta}
   $$
 
 对于多变量参数，假设 $\theta\in\{\theta_1, \theta_2\}$，则条件概率的计算如下：
