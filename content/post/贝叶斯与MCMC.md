@@ -129,6 +129,8 @@ $$
 
 $$
 x^{(i)} \sim q(x^{(i)})
+$$
+
 
 $$
 \hat{E}(f(x))=\frac{1}{N}\sum\_{i=1}^Nf(x^{(i)}\frac{p(x^{(i)})}{q(x^{(i)})})
@@ -238,6 +240,7 @@ $$
 - Stan
 - winBUGS
 - openBUGS
+
 
 
 ####参考资料：
