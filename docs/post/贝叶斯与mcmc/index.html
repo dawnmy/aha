@@ -279,11 +279,7 @@ $$</p>
 <p>对于多变量参数，假设 $\theta\in{\theta_1, \theta_2}$，则条件概率的计算如下：</p>
 
 <p>$$
-P(\theta_1|x)
-$$</p>
-
-<p>$$
-P(\theta_1|x)=d\theta_2
+P(\theta_1|x)=\int_{\Theta_2}{P(\theta_1,\theta_2|y)}d\theta_2
 $$</p>
 
 <p>因为：</p>
@@ -295,7 +291,7 @@ $$</p>
 <p>于是：</p>
 
 <p>$$
-P(\theta<em>1|x)=\int</em>{\Theta_2}{P(\theta_1|y,\theta_2)P(\theta_2|y)}d\theta_2
+P(\theta_1|x)=\int_{\Theta_2}{P(\theta_1|y,\theta_2)P(\theta_2|y)}d\theta_2
 $$</p>
 
 <h3 id="共轭分布">共轭分布</h3>
