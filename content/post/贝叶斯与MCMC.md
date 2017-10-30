@@ -109,8 +109,14 @@ $$
 $x$是取自$p(x)$中的样本，$x \sim p(x)$，现在我们想求$f(x)$的期望，
 
 $$
-E(f(x))=\int\_x{f(x)p(x)}dx \\
-x^{(i)} \sim p(x^{(i)}) \\
+E(f(x))=\int\_x{f(x)p(x)}dx
+$$
+
+$$
+x^{(i)} \sim p(x^{(i)})
+$$
+
+$$
 \hat{E}(f(x))=\frac{1}{N}\sum\_{i=1}^Nf(x^{(i)})
 $$
 
@@ -118,8 +124,13 @@ $$
 于是
 
 $$
-E(f(x))=\int\_x{f(x)\frac{p(x)}{q(x)}q(x)}dx \\
-x^{(i)} \sim q(x^{(i)}) \\
+E(f(x))=\int\_x{f(x)\frac{p(x)}{q(x)}q(x)}dx
+$$
+
+$$
+x^{(i)} \sim q(x^{(i)})
+
+$$
 \hat{E}(f(x))=\frac{1}{N}\sum\_{i=1}^Nf(x^{(i)}\frac{p(x^{(i)})}{q(x^{(i)})})
 $$
 
@@ -132,7 +143,10 @@ $$
 $$CDF(x)=\int_{-\infty}^{x}PDF(t)dt$$
 
 $$
-u \sim U(0,1)\\
+u \sim U(0,1)
+$$
+
+$$
 x=CDF^{-1}(u)
 $$
 
