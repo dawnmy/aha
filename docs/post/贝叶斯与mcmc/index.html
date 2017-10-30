@@ -367,13 +367,13 @@ $$</p>
 <h4 id="mcmc">MCMC</h4>
 
 <p>前面三种采样方法都有蒙特卡洛（MC）的思想，接下来我们介绍的是MCMC方法，多了一个MC。MCMC全称马尔可夫链蒙特卡洛方法（Markov chain Monte Carlo, MCMC）是通过构建状态转移概率矩阵使其平稳分布为待估参数的后验分布。满足细致平衡条件的状态转移概率矩阵可以收敛到指定的概率分布。
-MCMC方法满足细致平衡原则 （detailed balance principle），也就是 $x$ 到 $x^<em>$ 的概率等于 $x^</em>$ 到 $x$ 的概率：</p>
+MCMC方法满足细致平衡原则 （detailed balance principle），也就是 $x$ 到 $x^{<em>}$ 的概率等于 $x^{</em>}$ 到 $x$ 的概率：</p>
 
 <p>$$
-\pi(x)k(x\to{x^<em>})=\pi(x^</em>)k(x^*\to{x})
+\pi(x)k(x\to{x^{<em>}})=\pi(x^{</em>})k(x^{*}\to{x})
 $$</p>
 
-<p>其中，$\pi(x)$为出现样本$x$的概率，$k$为transition kernel函数表示样本间转移的概率。满足该原则的状态转移概率矩阵才能使得后验分布收敛。</p>
+<p>其中， $\pi(x)$ 为出现样本 $x$ 的概率， $k$ 为transition kernel函数表示样本间转移的概率。满足该原则的状态转移概率矩阵才能使得后验分布收敛。</p>
 
 <ul>
 <li>Metropolis-Hastings</li>
@@ -381,13 +381,13 @@ $$</p>
 
 <p>取样（转移概率）:</p>
 
-<p>$$x^* \sim q(x^*|x)$$</p>
+<p>$$x^{<em>} \sim q(x^{</em>}|x)$$</p>
 
 <p>接受概率：</p>
 
-<p>$$P_{xx^<em>}=min(1,\frac{\pi(x^</em>)q(x|x^<em>)}{\pi(x)q(x^</em>|x)})$$</p>
+<p>$$P_{xx^{<em>}}=min(1,\frac{\pi(x^{</em>})q(x|x^{<em>})}{\pi(x)q(x^{</em>}|x)})$$</p>
 
-<p>$u \sim U(0,1)$，如果 $u &lt; P<em>{xx^*}$，则$X</em>{t+1}=x^*$，否则$X_{t+1}=x$</p>
+<p>$u \sim U(0,1)$，如果 $u &lt; P<em>{xx^{<em>}}$，则 $X_{t+1}=x^{</em>}$ ，否则 $X</em>{t+1}=x$</p>
 
 <p>为了提高MH方法的效率，很多改进方法被提出来，其中很常见的是Hybrid MH，比如结合梯度信息来决定跳转的步长。</p>
 
@@ -401,23 +401,42 @@ $$</p>
 我们定义</p>
 
 <p>$$
-x^{(2)} \sim P(x|y^{(1)},z^{(1)}) <br />
-y^{(2)} \sim P(y|x^{(2)},z^{(1)}) <br />
-z^{(2)} \sim P(z|x^{(2)},y^{(2)}) <br />
-x^{(3)} \sim P(x|y^{(2)},z^{(2)}) <br />
-y^{(3)} \sim P(y|x^{(3)},z^{(2)}) <br />
-z^{(3)} \sim P(z|x^{(3)},y^{(3)}) <br />
+x^{(2)} \sim P(x|y^{(1)},z^{(1)})
+$$</p>
+
+<p>$$
+y^{(2)} \sim P(y|x^{(2)},z^{(1)})
+$$</p>
+
+<p>$$
+z^{(2)} \sim P(z|x^{(2)},y^{(2)})
+$$</p>
+
+<p>$$
+x^{(3)} \sim P(x|y^{(2)},z^{(2)})
+$$</p>
+
+<p>$$
+y^{(3)} \sim P(y|x^{(3)},z^{(2)})
+$$</p>
+
+<p>$$
+z^{(3)} \sim P(z|x^{(3)},y^{(3)})
 $$</p>
 
 <p>该定义符合细致平衡条件，这里就不详细证明了。</p>
 
 <p>这种原始的Gibbs采样显然是不可能并行化的，因为下一步的采样依赖于上一步的结果。于是很多改进方法被开发出来，比如引入辅助变量$u$，使得概率密度函数为$P(x,y,z,u)$</p>
 
-<p>$$ u \sim P(u|x,y,z)$$</p>
+<p>$$
+u \sim P(u|x,y,z)
+$$</p>
 
 <p>于是，</p>
 
-<p>$$ P(x,y,z|u)=P(x|u)P(y|u)P(z|u)$$</p>
+<p>$$
+P(x,y,z|u)=P(x|u)P(y|u)P(z|u)
+$$</p>
 
 <p>使得 $x,y,z$ 独立。</p>
 
@@ -441,30 +460,6 @@ $$</p>
 <li>winBUGS</li>
 <li>openBUGS</li>
 </ul>
-
-<table>
-<thead>
-<tr>
-<th align="left">left</th>
-<th align="center">center</th>
-<th align="right">right</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left">aaaa</td>
-<td align="center">bbbbbb</td>
-<td align="right">ccccc</td>
-</tr>
-
-<tr>
-<td align="left">a</td>
-<td align="center">b</td>
-<td align="right">c</td>
-</tr>
-</tbody>
-</table>
 
 <p>####参考资料：</p>
 
