@@ -78,15 +78,13 @@ $$
 
 - 常用共轭先验
 
-| Likelihood| Conjugate prior distribution |
-| --- | --- | --- |
-| Binomial | Beta |
-| Poisson  | Gamma |
-| Negative binomial | Beta |
-| Categorical | Dirichlet |
-| Multinomial | Dirichlet |
-| Hypergeometric | Beta-binomial |
-| Normal | Normal |
++ Binomial, Beta
++ Poisson, Gamma
++ Negative binomial, Beta
++ Categorical, Dirichlet
++ Multinomial, Dirichlet
++ Hypergeometric, Beta-binomial
++ Normal, Normal
 
 
 ### 非共轭先验时后验分布的获得
