@@ -57,7 +57,7 @@ P(\theta_1|x)
 $$
 
 $$
-P(\theta_1|x)=\int_{\Theta_2}{P(\theta_1,\theta_2|y)}d\theta_2
+P(\theta_1|x)=\int_{\Theta_2}{P(\theta_1,\theta_2|y)}
 $$
 
 因为：
