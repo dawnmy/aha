@@ -109,18 +109,18 @@ $$
 $x$是取自$p(x)$中的样本，$x \sim p(x)$，现在我们想求$f(x)$的期望，
 
 $$
-E(f(x))=\int_x{f(x)p(x)}dx \\
+E(f(x))=\int\_x{f(x)p(x)}dx \\
 x^{(i)} \sim p(x^{(i)}) \\
-\hat{E}(f(x))=\frac{1}{N}\sum_{i=1}^Nf(x^{(i)})
+\hat{E}(f(x))=\frac{1}{N}\sum\_{i=1}^Nf(x^{(i)})
 $$
 
 而往往，从$p(x)$ 中采样是有困难的，尤其当密度函数非常复杂的时候，于是我们引入简单的建议密度函数$q(x)$，采样$x \sim q(x)$，
 于是
 
 $$
-E(f(x))=\int_x{f(x)\frac{p(x)}{q(x)}q(x)}dx \\
+E(f(x))=\int\_x{f(x)\frac{p(x)}{q(x)}q(x)}dx \\
 x^{(i)} \sim q(x^{(i)}) \\
-\hat{E}(f(x))=\frac{1}{N}\sum_{i=1}^Nf(x^{(i)}\frac{p(x^{(i)})}{q(x^{(i)})})
+\hat{E}(f(x))=\frac{1}{N}\sum\_{i=1}^Nf(x^{(i)}\frac{p(x^{(i)})}{q(x^{(i)})})
 $$
 
 其中$p(x^{(i)})/q(x^{(i)})=w(x^{(i)})$ 就是重要性权重。
@@ -139,9 +139,11 @@ $$
 #### MCMC
 
 前面三种采样方法都有蒙特卡洛（MC）的思想，接下来我们介绍的是MCMC方法，多了一个MC。MCMC全称马尔可夫链蒙特卡洛方法（Markov chain Monte Carlo, MCMC）是通过构建状态转移概率矩阵使其平稳分布为待估参数的后验分布。满足细致平衡条件的状态转移概率矩阵可以收敛到指定的概率分布。
-MCMC方法满足细致平衡原则 （detailed balance principle），也就是$x$到$x^*$的概率等于$x^*$到$x$的概率：
+MCMC方法满足细致平衡原则 （detailed balance principle），也就是 $x$ 到 $x^*$ 的概率等于 $x^*$ 到 $x$ 的概率：
 
-$$\pi(x)k(x\to{x^*})=\pi(x^*)k(x^*\to{x})$$
+$$
+\pi(x)k(x\to{x^*})=\pi(x^*)k(x^*\to{x})
+$$
 
 其中，$\pi(x)$为出现样本$x$的概率，$k$为transition kernel函数表示样本间转移的概率。满足该原则的状态转移概率矩阵才能使得后验分布收敛。
 
